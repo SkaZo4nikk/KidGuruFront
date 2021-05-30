@@ -53,11 +53,11 @@ export const reducer = (state, action) => {
           };
         };
       
-      case "redirect":
-        return{
-          ...state,
-          redirect: action.redirect,
-        }
+      // case "redirect":
+      //   return{
+      //     ...state,
+      //     redirect: action.redirect,
+      //   }
   
       default:
         throw new Error();
