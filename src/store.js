@@ -1,6 +1,3 @@
-import APIHelper from './APIHelper'
-
-
 export const reducer = (state, action) => {
     function correct(lhs, rhs){
       return lhs == rhs ? 1 : 0
@@ -11,7 +8,6 @@ export const reducer = (state, action) => {
         return{
           ...state,
           task: action.task,
-          validness: 0,
           next_task: 0,
           redirect: 1
         }
@@ -20,7 +16,6 @@ export const reducer = (state, action) => {
         return{
           ...state,
           animal: action.options,
-          validness: 0,
           next_task: 0,
           redirect: 2
         }
@@ -29,12 +24,6 @@ export const reducer = (state, action) => {
         return{
           ...state,
           next_task: 1
-        }
-
-      case "redirect":
-        return{
-          ...state,
-          redirect: action.redirect
         }
 
       case "answer_given":
@@ -53,11 +42,11 @@ export const reducer = (state, action) => {
           };
         };
       
-      // case "redirect":
-      //   return{
-      //     ...state,
-      //     redirect: action.redirect,
-      //   }
+      case "redirect":
+        return{
+          ...state,
+          redirect: action.redirect,
+        }
   
       default:
         throw new Error();

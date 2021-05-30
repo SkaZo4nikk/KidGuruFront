@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000"
+const API_URL = "https://kidgurufinal.herokuapp.com"
 
 async function getMenu(){
     const obj = await axios.get(`${API_URL}/main_page`)

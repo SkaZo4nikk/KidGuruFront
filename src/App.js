@@ -77,7 +77,9 @@ const App = () => {
       render()
     }
     <Switch>
-      <Route path='/main_page' component={MainPage} />
+      <Route path='/main_page' component={MainPage} >
+        <MainPage dispatch={dispatch}/>
+      </Route>
       <Route path='/math_guru' component={Page0}>
       <Page0 dispatch={dispatch} appState={appState}></Page0>
           </Route>

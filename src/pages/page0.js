@@ -42,10 +42,6 @@ function Page0({dispatch, appState}) {
       }
     }, [appState.next_task])
 
-    const reload = () => {
-      window.location.reload();
-    }
-
   return (
     <>
       <Container styles={darkSber}>

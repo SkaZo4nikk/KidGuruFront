@@ -13,7 +13,12 @@ import {
   } from "react-router-dom";
 
 
-const MainPage = () =>{
+const MainPage = ({dispatch}) =>{
+
+    useEffect(() => {
+        dispatch({type: "redirect", redirect: 0})
+        
+      }, []);
 
     return(
         <Container>
