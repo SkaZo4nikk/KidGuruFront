@@ -45,13 +45,13 @@ export const reducer = (state, action) => {
           };
         };
 
-        case "animal_given":
-          if(state.animal){
-            return{
-              ...state,
-              validness: correct(state.animal.name, action.animal)
-            };
+      case "animal_given":
+        if(state.animal){
+          return{
+            ...state,
+            validness: correct(state.animal.name, action.animal)
           };
+        };
       
       case "redirect":
         return{
