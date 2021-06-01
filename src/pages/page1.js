@@ -78,8 +78,13 @@ function Page1 ({dispatch, appState}){
         <Image src={animal.img_url}></Image>
         </Wrapper>
             <Container>  
+<<<<<<< HEAD
                 <Button style={{ marginTop: '20px'}} onClick={() => moveTo()}>Следующее животное</Button>
                 <Button style={{ marginTop: '20px'}} onClick={Back}><Link to='/'>На главную</Link></Button>
+=======
+                <Button style={{ marginBottom: '20px'}} onClick={() => moveTo()}>Следующее животное</Button>
+                <Button onClick={Back}><Link to='/'>На главную</Link></Button>
+>>>>>>> a96a3e9... Update page1.js
              </Container>
         </>
      ) }
