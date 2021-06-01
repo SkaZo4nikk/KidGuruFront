@@ -67,6 +67,10 @@ function Page1 ({dispatch, appState}){
           moveTo()
         }
       }, [appState.next_task])
+
+      const Back = () => {
+        dispatch({type: "redirect", redirect: 0})
+      }
     
     return(
         <>
@@ -74,8 +78,8 @@ function Page1 ({dispatch, appState}){
         <Image src={animal.img_url}></Image>
         </Wrapper>
             <Container>  
-                <Button onClick={() => moveTo()}>Следующее животное</Button>
-                <Button><Link to='/'>На главную</Link></Button>
+                <Button style={{ marginBottom: '20px'}} onClick={() => moveTo()}>Следующее животное</Button>
+                <Button onClick={Back}><Link to='/'>На главную</Link></Button>
              </Container>
         </>
      ) }

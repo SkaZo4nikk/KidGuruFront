@@ -11,3 +11,41 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+  h1 span:nth-child(1) { color: deepskyblue }
+  h1 span:nth-child(2){ animation-delay:.10s; color: greenyellow; }
+  h1 span:nth-child(3){ animation-delay:.20s; color: magenta; }
+  h1 span:nth-child(4){ animation-delay:.30s; color: aqua;}
+  h1 span:nth-child(5){ animation-delay:.40s; color: yellow;}
+  h1 span:nth-child(6){ animation-delay:.50s; color: springgreen; }
+  h1 span:nth-child(7){ animation-delay:.60s; color: orchid;}
+
+  @keyframes shake{
+    0% {
+      transform: none;
+    }
+    50% {
+      transform:translateY(-6px);
+    }
+    100% {
+      transform:translateY(6px);
+    }
+  }
+
+
+  h1 span{
+    display: inline-block;
+    animation: shake .3s ease-in-out infinite;
+  }
+
+  body span{
+    font-size: 3em;
+  }
+
+  a{
+    text-decoration: none;
+    color: white;
+  }
+
+  .math p{
+    font-size: 3em;
+  }

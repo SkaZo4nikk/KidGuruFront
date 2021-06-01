@@ -1,5 +1,6 @@
 import ApiHelper from '../APIHelper.js'
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
 import { darkSber } from '@sberdevices/plasma-tokens/themes';
 import { Button } from '@sberdevices/ui/components/Button/Button';
@@ -12,6 +13,10 @@ import {
     Link
   } from "react-router-dom";
 
+const Wrapper = styled.div`
+  margin: 0 auto;
+`
+
 
 const MainPage = ({dispatch}) =>{
 
@@ -20,10 +25,32 @@ const MainPage = ({dispatch}) =>{
         
       }, []);
 
+      const MathGuru = () => {
+        dispatch({type: "redirect", redirect: 1})
+      }
+  
+  
+      const AnimalGuru = () => {
+        dispatch({type: "redirect", redirect: 2})
+      }
+
     return(
         <Container>
-            <Button><Link to='/math_guru'>Math Guru</Link></Button>
-            <Button><Link to='/g_animal'>Guess Animal</Link></Button>
+            <Wrapper>
+              <h1>
+                <span>K</span>
+                <span>I</span>
+                <span>D</span>
+                <span>G</span>
+                <span>U</span>
+                <span>R</span>
+                <span>U</span>
+              </h1>
+            </Wrapper>
+            <Button style={{ marginBottom: '20px'}} onClick={MathGuru}><Link to='/math_guru'>Math Guru</Link></Button>
+            
+            <Button onClick={AnimalGuru}><Link to='/g_animal'>Guess Animal</Link></Button>
+
         </Container>
     )
 }

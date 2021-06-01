@@ -9,8 +9,6 @@ import {
   Link
 } from "react-router-dom";
 
-
-
 let currentId = 0;
 
 function Page0({dispatch, appState}) {
@@ -42,14 +40,18 @@ function Page0({dispatch, appState}) {
       }
     }, [appState.next_task])
 
+    const Back = () => {
+      dispatch({type: "redirect", redirect: 0})
+    }
+
   return (
     <>
       <Container styles={darkSber}>
-        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '1'}}>
-        {items.first_arg} {items.operator} {items.second_arg}= ?
+        <div class="math" style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '1'}}>
+          <p>{items.first_arg} {items.operator} {items.second_arg}= ?</p>
         </div>
-        <Button onClick={()=>moveTo(1)}>Следующий пример</Button>
-        <Button><Link to='/'>На главную</Link></Button>
+        <Button style={{ marginBottom: '20px'}} onClick={()=>moveTo(1)}>Следующий пример</Button>
+        <Button onClick={Back}><Link to='/'>На главную</Link></Button>
       </Container>
     </>
   );
