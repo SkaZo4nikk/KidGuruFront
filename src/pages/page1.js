@@ -74,12 +74,12 @@ function Page1 ({dispatch, appState}){
     
     return(
         <>
-        <Wrapper>
+        <Wrapper style={{ marginTop: '20px'}}>
         <Image src={animal.img_url}></Image>
         </Wrapper>
             <Container>  
-                <Button style={{ marginBottom: '20px'}} onClick={() => moveTo()}>Следующее животное</Button>
-                <Button onClick={Back}><Link to='/'>На главную</Link></Button>
+                <Button style={{ marginTop: '20px'}} onClick={() => moveTo()}>Следующее животное</Button>
+                <Button style={{ marginTop: '20px'}} onClick={Back}><Link to='/'>На главную</Link></Button>
              </Container>
         </>
      ) }
