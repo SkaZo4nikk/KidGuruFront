@@ -5,6 +5,7 @@ import './App.css';
 import MainPage from './pages/main_page'
 import Page0 from './pages/page0'
 import Page1 from './pages/page1'
+import Congratulations from './pages/page_congratulations'
 import {
   BrowserRouter as Router,
   Switch,
@@ -68,6 +69,10 @@ const App = () => {
         return(
           <Redirect to='/g_animal'/> 
         );
+      case 3:
+        return(
+          <Redirect to='/congratulations' />
+        );
     }
   }
 
@@ -77,19 +82,22 @@ const App = () => {
       render()
     }
     <Switch>
+      <Route path='/congratulations' component={Congratulations}>
+        <Congratulations appState={appState} />
+      </Route>
       <Route path='/main_page' component={MainPage} >
         <MainPage dispatch={dispatch}/>
       </Route>
       <Route path='/math_guru' component={Page0}>
-      <Page0 dispatch={dispatch} appState={appState}></Page0>
-          </Route>
-          <Route path='/g_animal' component={Page1} >
-            <Page1 dispatch={dispatch} appState={appState}></Page1>
-          </Route>
-          <Route path='/' exact >
-            <Redirect to='/main_page' exact/>
-          </Route>
-        </Switch>
+        <Page0 dispatch={dispatch} appState={appState}></Page0>
+      </Route>
+      <Route path='/g_animal' component={Page1} >
+        <Page1 dispatch={dispatch} appState={appState}></Page1>
+      </Route>
+      <Route path='/' exact >
+        <Redirect to='/main_page' exact/>
+      </Route>
+      </Switch>
   </Router>
   )
 }

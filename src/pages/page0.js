@@ -35,7 +35,10 @@ function Page0({dispatch, appState}) {
     }
 
     useEffect(() => {
-      if(appState.redirect == 1 && appState.next_task == 1){
+      if(appState.total_tasks >= 10){
+        dispatch({type: "redirect", redirect: 3})
+      }
+      else if(appState.redirect == 1 && appState.next_task == 1){
         moveTo(1)
       }
     }, [appState.next_task])
