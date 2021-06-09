@@ -19,15 +19,15 @@ function Page0({dispatch, appState}) {
     }
     
     useEffect(() => {
-      fetchedData(currentId).then((response) => {
+      fetchedData(0).then((response) => {
             dispatch({type: "math_guru", task: response.data})
             const  data  = response.data;
             setItems(data);
         })
     }, []);
 
-    const moveTo = (nextId) =>  {
-        fetchedData(nextId).then((response) => {
+    const moveTo = () =>  {
+        fetchedData(0).then((response) => {
             const data  = response.data;
             dispatch({type: "math_guru", task: data})
             setItems(data);
@@ -35,7 +35,11 @@ function Page0({dispatch, appState}) {
     }
 
     useEffect(() => {
-      if(appState.redirect == 1 && appState.next_task == 1){
+      if(appState.total_tasks >= 10){
+        dispatch({type: "redirect", redirect: 3})
+        fetchedData(1)
+      }
+      else if(appState.redirect == 1 && appState.next_task == 1){
         moveTo(1)
       }
     }, [appState.next_task])
@@ -50,7 +54,7 @@ function Page0({dispatch, appState}) {
         <div class="math" style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '1'}}>
           <p>{items.first_arg} {items.operator} {items.second_arg}= ?</p>
         </div>
-        <Button style={{ marginBottom: '20px'}} onClick={()=>moveTo(1)}>Следующий пример</Button>
+        <Button style={{ marginBottom: '20px'}} onClick={()=>moveTo()}>Следующий пример</Button>
         <Button onClick={Back}><Link to='/'>На главную</Link></Button>
       </Container>
     </>

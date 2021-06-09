@@ -9,7 +9,9 @@ export const reducer = (state, action) => {
           ...state,
           task: action.task,
           next_task: 0,
-          redirect: 1
+          redirect: 1,
+          solved: 0,
+          total_tasks: (action.task.task_num % 20)
         }
 
       case "animal_guru":
@@ -17,6 +19,7 @@ export const reducer = (state, action) => {
           ...state,
           animal: action.options,
           next_task: 0,
+          solved: 0,
           redirect: 2
         }
 
@@ -30,7 +33,8 @@ export const reducer = (state, action) => {
         if(state.task){
           return {
             ...state,
-            validness: correct(state.task.result, action.number)
+            validness: correct(state.task.result, action.number),
+            solved: state.solved + correct(state.task.result, action.number)
           };
         };
 
@@ -38,7 +42,8 @@ export const reducer = (state, action) => {
         if(state.animal){
           return{
             ...state,
-            validness: correct(state.animal.name, action.animal)
+            validness: correct(state.animal.name, action.animal),
+            solved: state.solved + correct(state.task.result, action.number)
           };
         };
       

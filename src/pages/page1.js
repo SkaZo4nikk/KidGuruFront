@@ -79,7 +79,7 @@ function Page1 ({dispatch, appState}){
         </Wrapper>
             <Container>  
                 <Button style={{ marginTop: '20px'}} onClick={() => moveTo()}>Следующее животное</Button>
-                <Button style={{ marginTop: '20px'}} onClick={Back}><Link to='/'>На главную</Link></Button>
+                <Button style={{ marginTop: '20px'}} onClick={Back}>На главную</Button>
              </Container>
         </>
      ) }
