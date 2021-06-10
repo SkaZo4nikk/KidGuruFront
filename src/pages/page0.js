@@ -14,20 +14,20 @@ let currentId = 0;
 function Page0({dispatch, appState}) {
     const [items, setItems] = useState([]);
 
-    const fetchedData = async (id) => {
-        return await ApiHelper.getMathGuru(id);
+    const fetchedData = async (id, next) => {
+        return await ApiHelper.getMathGuru(id, next);
     }
     
     useEffect(() => {
-      fetchedData(0).then((response) => {
+      fetchedData(currentId, 0).then((response) => {
             dispatch({type: "math_guru", task: response.data})
             const  data  = response.data;
             setItems(data);
         })
     }, []);
 
-    const moveTo = () =>  {
-        fetchedData(0).then((response) => {
+    const moveTo = (nextId) =>  {
+        fetchedData(nextId, 0).then((response) => {
             const data  = response.data;
             dispatch({type: "math_guru", task: data})
             setItems(data);
@@ -36,8 +36,12 @@ function Page0({dispatch, appState}) {
 
     useEffect(() => {
       if(appState.total_tasks >= 10){
+        fetchedData(1,1).then((response) => {
+          const data  = response.data;
+          dispatch({type: "math_guru", task: data})
+          setItems(data);
+      })
         dispatch({type: "redirect", redirect: 3})
-        fetchedData(1)
       }
       else if(appState.redirect == 1 && appState.next_task == 1){
         moveTo(1)
@@ -54,7 +58,7 @@ function Page0({dispatch, appState}) {
         <div class="math" style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '1'}}>
           <p>{items.first_arg} {items.operator} {items.second_arg}= ?</p>
         </div>
-        <Button style={{ marginBottom: '20px'}} onClick={()=>moveTo()}>Следующий пример</Button>
+        <Button style={{ marginBottom: '20px'}} onClick={()=>moveTo(1, 0)}>Следующий пример</Button>
         <Button onClick={Back}><Link to='/'>На главную</Link></Button>
       </Container>
     </>

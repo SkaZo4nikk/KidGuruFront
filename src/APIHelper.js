@@ -7,8 +7,8 @@ async function getMenu(){
     return obj
 }
 
-async function getMathGuru(nextt){
-    const obj = await axios.get(`${API_URL}/math_guru`, {params: {next: nextt} })
+async function getMathGuru(nextt, taskk){
+    const obj = await axios.get(`${API_URL}/math_guru`, {params: {next: nextt, task: taskk} })
     return obj
 }
 
