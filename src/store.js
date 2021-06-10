@@ -10,7 +10,7 @@ export const reducer = (state, action) => {
           task: action.task,
           next_task: 0,
           redirect: 1,
-          solved: 0,
+          solved: (state.solved) ? state.solved : 0,
           total_tasks: (action.task.task_num % 20)
         }
 

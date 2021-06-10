@@ -23,7 +23,7 @@ function Congratulations({appState, dispatch}) {
         <div class="math" style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '1'}}>
           <p>{appState.solved} / {appState.total_tasks}</p>
         </div>
-        <Button onClick={Back}>На главную</Button>
+        <Container>  <Button onClick={Back}>На главную</Button></Container>
     </>
     );
 }

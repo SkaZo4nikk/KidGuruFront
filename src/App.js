@@ -1,5 +1,6 @@
 // import { Container } from '@sberdevices/plasma-ui/components/Grid';
 import React,{useEffect,useReducer,useRef}  from 'react';
+import ApiHelper from './APIHelper.js'
 
 import './App.css';
 import MainPage from './pages/main_page'
@@ -37,6 +38,32 @@ const App = () => {
 
   const assistantStateRef = useRef();
   const assistantRef = useRef();
+
+  const fetchedData = async (id, next) => {
+    return await ApiHelper.getMathGuru(id, next);
+  }
+
+  useEffect(() => {
+    dispatch({type: "next_task", next_task: 1})
+  }, []);
+
+  useEffect(() => {
+    if(appState.total_tasks >= 10){
+
+      dispatch({type: "redirect", redirect: 3})
+    }
+    
+  }, [appState.total_tasks]);
+
+  
+
+  useEffect(() => {
+    if(appState.next_task == 1){
+      fetchedData(1, 0).then((response) => {
+        dispatch({type: "math_guru", task: response.data})
+    })
+    }
+  }, [appState.next_task]);
 
   useEffect(() => {
     assistantRef.current = initializeAssistant(() => assistantStateRef.current);
