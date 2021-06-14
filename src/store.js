@@ -4,14 +4,27 @@ export const reducer = (state, action) => {
     }
 
     switch (action.type) {
+      case "start_math":
+        return{
+          ...state,
+          start: action.start
+        }
+
       case "math_guru":
         return{
           ...state,
           task: action.task,
           next_task: 0,
-          redirect: 1,
           solved: (state.solved) ? state.solved : 0,
-          total_tasks: (action.task.task_num % 20)
+          total_tasks: (action.task.task_num % 20),
+          validness: 0,
+          start: 0
+        }
+
+      case "solved":
+        return{
+          ...state,
+          solved: action.solved
         }
 
       case "animal_guru":
@@ -30,6 +43,7 @@ export const reducer = (state, action) => {
         }
 
       case "answer_given":
+        console.log("smh")
         if(state.task){
           return {
             ...state,

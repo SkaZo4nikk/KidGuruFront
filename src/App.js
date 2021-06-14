@@ -43,27 +43,29 @@ const App = () => {
     return await ApiHelper.getMathGuru(id, next);
   }
 
-  useEffect(() => {
-    dispatch({type: "next_task", next_task: 1})
-  }, []);
 
   useEffect(() => {
     if(appState.total_tasks >= 10){
-
       dispatch({type: "redirect", redirect: 3})
     }
-    
   }, [appState.total_tasks]);
 
-  
-
   useEffect(() => {
-    if(appState.next_task == 1){
-      fetchedData(1, 0).then((response) => {
-        dispatch({type: "math_guru", task: response.data})
-    })
+    if(appState.start == 1){
+      fetchedData(0,1)
+      dispatch({type: "solved", solved: 0})
+      dispatch({type: "next_task", next_task: 1})
+      dispatch({type: "redirect", redirect: 1})
     }
-  }, [appState.next_task]);
+  }, [appState.start])
+
+  // useEffect(() => {
+  //   if(appState.next_task == 1){
+  //     fetchedData(1, 0).then((response) => {
+  //       dispatch({type: "math_guru", task: response.data})
+  //   })
+  //   }
+  // }, [appState.next_task]);
 
   useEffect(() => {
     assistantRef.current = initializeAssistant(() => assistantStateRef.current);

@@ -32,24 +32,30 @@ function Page0({dispatch, appState}) {
             dispatch({type: "math_guru", task: data})
             setItems(data);
         })
+        dispatch({type: "redirect", redirect: 1})
     }
 
     useEffect(() => {
       if(appState.total_tasks >= 10){
-        fetchedData(1,1).then((response) => {
-          const data  = response.data;
-          dispatch({type: "math_guru", task: data})
-          setItems(data);
-      })
-        dispatch({type: "redirect", redirect: 3})
+        fetchedData(0,1)
       }
       else if(appState.redirect == 1 && appState.next_task == 1){
         moveTo(1)
       }
     }, [appState.next_task])
 
+    useEffect(() => {
+      if(appState.validness == 1){
+        moveTo(1)
+      }
+    }, [appState.validness])
+
     const Back = () => {
       dispatch({type: "redirect", redirect: 0})
+    }
+
+    const Next = () => {
+      dispatch({type: "next_task", next_task: 1})
     }
 
   return (
@@ -58,8 +64,8 @@ function Page0({dispatch, appState}) {
         <div class="math" style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '1'}}>
           <p>{items.first_arg} {items.operator} {items.second_arg}= ?</p>
         </div>
-        <Button style={{ marginBottom: '20px'}} onClick={()=>moveTo(1, 0)}>Следующий пример</Button>
-        <Button onClick={Back}><Link to='/'>На главную</Link></Button>
+        <Button style={{ marginBottom: '20px'}} onClick={()=>Next()}>Следующий пример</Button>
+        <Button onClick={Back}><Link to='/'>Меню</Link></Button>
       </Container>
     </>
   );

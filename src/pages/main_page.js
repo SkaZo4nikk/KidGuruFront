@@ -22,11 +22,11 @@ const MainPage = ({dispatch}) =>{
   
     useEffect(() => {
         dispatch({type: "redirect", redirect: 0})
-        
       }, []);
 
       const MathGuru = () => {
         dispatch({type: "redirect", redirect: 1})
+        dispatch({type: "next_task", next_task: 1})
       }
   
       const AnimalGuru = () => {
