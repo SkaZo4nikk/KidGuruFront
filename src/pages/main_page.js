@@ -14,6 +14,7 @@ import {
   } from "react-router-dom";
 
 const Wrapper = styled.div`
+  padding-top: 15%;
   margin: 0 auto;
 `
 
@@ -48,7 +49,6 @@ const MainPage = ({dispatch}) =>{
             </Wrapper>
             <Button style={{ marginBottom: '20px'}} onClick={MathGuru}><Link to='/math_guru'>Math Guru</Link></Button>
             <Button onClick={AnimalGuru}><Link to='/g_animal'>Guess Animal</Link></Button>
-
         </Container>
     )
 }

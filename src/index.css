@@ -49,3 +49,13 @@ code {
   .math p{
     font-size: 3em;
   }
+  
+  .progress{
+    padding-right: 3%;
+    padding-top: 3%;
+    font-size: 2em;
+  }
+  .progress p{
+    text-align: right;
+  }
+

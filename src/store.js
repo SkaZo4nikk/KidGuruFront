@@ -16,7 +16,7 @@ export const reducer = (state, action) => {
           task: action.task,
           next_task: 0,
           solved: (state.solved) ? state.solved : 0,
-          total_tasks: (action.task.task_num % 20),
+          total_tasks: action.task.task_num,
           validness: 0,
           start: 0
         }
@@ -32,8 +32,16 @@ export const reducer = (state, action) => {
           ...state,
           animal: action.options,
           next_task: 0,
-          solved: 0,
-          redirect: 2
+          solved: (state.solved) ? state.solved : 0,
+          redirect: 2,
+          validness: 0,
+          total_tasks: 0
+        }
+
+      case "total_tasks":
+        return{
+          ...state,
+          total_tasks: action.total_tasks
         }
 
       case "next_task":
@@ -57,7 +65,7 @@ export const reducer = (state, action) => {
           return{
             ...state,
             validness: correct(state.animal.name, action.animal),
-            solved: state.solved + correct(state.task.result, action.number)
+            solved: state.solved + correct(state.animal.name, action.animal)
           };
         };
       

@@ -45,8 +45,9 @@ const App = () => {
 
 
   useEffect(() => {
-    if(appState.total_tasks >= 10){
+    if(appState.total_tasks >= 20){
       dispatch({type: "redirect", redirect: 3})
+      assistantRef.current?.sendData({ action: { action_id: 'GameOver' }});    
     }
   }, [appState.total_tasks]);
 
@@ -75,6 +76,7 @@ const App = () => {
         dispatch(action);
       }
     });
+    dispatch({type: "redirect", redirect: 7000})
   }, []);
 
   useEffect(() => {
@@ -82,6 +84,14 @@ const App = () => {
     console.log(assistantStateRef.current)
   }, [appState]);
 
+  useEffect(() => {
+    if(appState.redirect == 0){
+      assistantRef.current?.sendData({ action: { action_id: 'MainPage' }});
+    }
+    if(appState.redirect == 2){
+      assistantRef.current?.sendData({ action: { action_id: 'AnimalGuru' }});
+    }
+  },[appState.redirect])
 
 
   const render = () => {

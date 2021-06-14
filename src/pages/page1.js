@@ -16,7 +16,7 @@ const Wrapper = styled.div`
     img{
         margin: 0 auto;
         max-width: 1200 px;
-        max-height: 700px;
+        max-height: 550px;
     }
     .copyright{
         color:#999;
@@ -53,24 +53,31 @@ function Page1 ({dispatch, appState}){
     }, []);
 
     const moveTo = () =>  {
-        currentId > 19 ? currentId = 0 : currentId += 1;
+        ((currentId+1) >= 20) ? currentId = 0 : currentId += 1;
         
         fetchedData().then((response) => {
             const data  = response.data;
             dispatch({type: "animal_guru", options: data.options})
+            dispatch({type: "total_tasks", total_tasks: currentId+1})
             setAnimal(data.options);
         })
     }
 
     useEffect(() => {
-        if(appState.redirect == 2 && appState.next_task == 1){
+        if(appState.validness == 1){
           moveTo()
         }
-      }, [appState.next_task])
+      }, [appState.validness])
 
-      const Back = () => {
+    useEffect(() => {
+        if(appState.redirect == 2 && appState.next_task == 1){
+            moveTo()
+        }
+    }, [appState.next_task])
+
+    const Back = () => {
         dispatch({type: "redirect", redirect: 0})
-      }
+    }
     
     return(
         <>

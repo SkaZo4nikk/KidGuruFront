@@ -36,7 +36,7 @@ function Page0({dispatch, appState}) {
     }
 
     useEffect(() => {
-      if(appState.total_tasks >= 10){
+      if(appState.total_tasks >= 20){
         fetchedData(0,1)
       }
       else if(appState.redirect == 1 && appState.next_task == 1){
@@ -61,6 +61,9 @@ function Page0({dispatch, appState}) {
   return (
     <>
       <Container styles={darkSber}>
+        <div class="progress">
+          <p>Прогресс: {appState.solved} / 20</p>
+        </div>
         <div class="math" style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '1'}}>
           <p>{items.first_arg} {items.operator} {items.second_arg}= ?</p>
         </div>
