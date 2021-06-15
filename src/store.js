@@ -74,6 +74,12 @@ export const reducer = (state, action) => {
           ...state,
           redirect: action.redirect,
         }
+
+      case "event":
+        return{
+          ...state,
+          event: action.event 
+        }
   
       default:
         throw new Error();

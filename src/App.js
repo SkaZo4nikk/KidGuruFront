@@ -60,6 +60,13 @@ const App = () => {
     }
   }, [appState.start])
 
+   useEffect(() => {
+    if(appState.event == "main"){
+      assistantRef.current?.sendData({ action: { action_id: 'MainPage' }});    
+    }
+  }, [appState.event])
+
+
   // useEffect(() => {
   //   if(appState.next_task == 1){
   //     fetchedData(1, 0).then((response) => {
@@ -85,9 +92,6 @@ const App = () => {
   }, [appState]);
 
   useEffect(() => {
-    if(appState.redirect == 0){
-      assistantRef.current?.sendData({ action: { action_id: 'MainPage' }});
-    }
     if(appState.redirect == 2){
       assistantRef.current?.sendData({ action: { action_id: 'AnimalGuru' }});
     }
@@ -122,16 +126,16 @@ const App = () => {
     }
     <Switch>
       <Route path='/congratulations' component={Congratulations}>
-        <Congratulations appState={appState} dispatch={dispatch} />
+        <Congratulations appState={appState} dispatch={dispatch} assistant={assistantRef} />
       </Route>
       <Route path='/main_page' component={MainPage} >
         <MainPage dispatch={dispatch}/>
       </Route>
       <Route path='/math_guru' component={Page0}>
-        <Page0 dispatch={dispatch} appState={appState}></Page0>
+        <Page0 dispatch={dispatch} appState={appState} assistant={assistantRef}></Page0>
       </Route>
       <Route path='/g_animal' component={Page1} >
-        <Page1 dispatch={dispatch} appState={appState}></Page1>
+        <Page1 dispatch={dispatch} appState={appState} assistant={assistantRef}></Page1>
       </Route>
       <Route path='/' exact >
         <Redirect to='/main_page' exact/>

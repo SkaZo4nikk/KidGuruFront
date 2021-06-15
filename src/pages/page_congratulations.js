@@ -15,6 +15,7 @@ function Congratulations({appState, dispatch}) {
 
     const Back = () => {
       dispatch({type: "redirect", redirect: 0})
+      dispatch({type: "event", event: "main"})
     }
 
 

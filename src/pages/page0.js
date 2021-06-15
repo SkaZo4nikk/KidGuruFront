@@ -51,6 +51,7 @@ function Page0({dispatch, appState}) {
     }, [appState.validness])
 
     const Back = () => {
+      dispatch({type: "event", event: "main"})
       dispatch({type: "redirect", redirect: 0})
     }
 

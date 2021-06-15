@@ -9,15 +9,22 @@ import { Image } from '@sberdevices/ui/components/Image/Image';
 import { Link } from "react-router-dom";
 //base64, 
 const Wrapper = styled.div`
-    
-    font-family:'Noto Sans HK', sans-serif;
-    width: 53.5%;
-    margin: 0 auto;
-    img{
+    @media screen and (min-width: 1101px) {
+        max-width: 40vw;
         margin: 0 auto;
-        max-width: 1200 px;
-        max-height: 550px;
+        img {
+            max-height: 40vh;
+        }
     }
+    @media screen and (max-width: 1100px){
+        max-width: 30vw;
+        margin: 0 auto;
+        #top img{
+            max-height: 30vh;
+        }
+    }
+    font-family:'Noto Sans HK', sans-serif;
+
     .copyright{
         color:#999;
     }
@@ -76,13 +83,14 @@ function Page1 ({dispatch, appState}){
     }, [appState.next_task])
 
     const Back = () => {
+        dispatch({type: "event", event: "main"})
         dispatch({type: "redirect", redirect: 0})
     }
     
     return(
         <>
         <Wrapper style={{ marginTop: '20px'}}>
-        <Image src={animal.img_url}></Image>
+            <Image id="top" src={animal.img_url}></Image>
         </Wrapper>
             <Container>  
                 <Button style={{ marginTop: '20px'}} onClick={() => moveTo()}>Следующее животное</Button>

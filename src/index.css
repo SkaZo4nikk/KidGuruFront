@@ -47,15 +47,17 @@ code {
   }
 
   .math p{
+    margin-top: 10px;
     font-size: 3em;
   }
   
   .progress{
-    padding-right: 3%;
-    padding-top: 3%;
+    padding-right: 10px;
+    padding-top: 10px;
     font-size: 2em;
   }
   .progress p{
     text-align: right;
+    margin-bottom: 0;
   }
 
