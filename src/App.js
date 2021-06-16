@@ -64,6 +64,7 @@ const App = () => {
     if(appState.event == "main"){
       assistantRef.current?.sendData({ action: { action_id: 'MainPage' }});    
     }
+    dispatch({type: "event", event: "none"})
   }, [appState.event])
 
 
@@ -92,6 +93,9 @@ const App = () => {
   }, [appState]);
 
   useEffect(() => {
+    if(appState.redirect == 1){
+      assistantRef.current?.sendData({ action: { action_id: 'Math' }});
+    }
     if(appState.redirect == 2){
       assistantRef.current?.sendData({ action: { action_id: 'AnimalGuru' }});
     }
