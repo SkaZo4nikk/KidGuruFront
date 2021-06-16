@@ -16,15 +16,25 @@ const Wrapper = styled.div`
             max-height: 40vh;
         }
     }
+
     @media screen and (max-width: 1200px){
-        max-width: 80vw;
+        max-width: 90vw;
         margin: 0 auto;
         #top img{
             max-height: 30vh;
         }
     }
-    @media screen and (max-height: 801px) and (max-width: 1201px){
+
+    @media screen and (height: 800px) and (width: 1280px){
         max-width: 40vw;
+        margin: 0 auto;
+        #top img{
+            max-height: 30vh;
+        }
+    }
+
+    @media screen and (max-height: 801px) and (max-width: 1201px){
+        max-width: 80vw;
         margin: 0 auto;
         #top img{
             max-height: 30vh;
