@@ -9,6 +9,12 @@ export const reducer = (state, action) => {
           ...state,
           start: action.start
         }
+      
+      case "start_animal":
+        return{
+          ...state,
+          start_g: action.start_g
+        }
 
       case "math_guru":
         return{
@@ -35,7 +41,8 @@ export const reducer = (state, action) => {
           solved: (state.solved) ? state.solved : 0,
           redirect: 2,
           validness: 0,
-          total_tasks: 0
+          total_tasks: 0,
+          start_g: 0
         }
 
       case "total_tasks":

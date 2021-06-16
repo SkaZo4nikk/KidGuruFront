@@ -101,6 +101,14 @@ function Page1 ({dispatch, appState}){
         }
     }, [appState.next_task])
 
+    useEffect(() => {
+        console.log("SAKFJLKSAJKFL:SAJFSL:SAKFJSKA")
+        if(appState.start_g == 1){
+          currentId = 0;
+          
+        }
+      }, [appState.start_g])
+
     const Back = () => {
         dispatch({type: "event", event: "main"})
         dispatch({type: "redirect", redirect: 0})

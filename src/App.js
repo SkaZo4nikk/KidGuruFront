@@ -60,13 +60,29 @@ const App = () => {
     }
   }, [appState.start])
 
-   useEffect(() => {
+  useEffect(() => {
+    if(appState.start_g == 1){
+      fetchedData(0,1)
+      dispatch({type: "solved", solved: 0})
+      dispatch({type: "redirect", redirect: 2})
+    }
+  }, [appState.start_g])
+
+  useEffect(() => {
     if(appState.event == "main"){
       assistantRef.current?.sendData({ action: { action_id: 'MainPage' }});    
     }
     dispatch({type: "event", event: "none"})
   }, [appState.event])
 
+  useEffect(() => {
+    if(appState.next_task == 1 && appState.event == "nextTask"){
+      assistantRef.current?.sendData({ action: { action_id: 'nextTask' }});    
+    }
+    if(appState.next_task == 1 && appState.event == "nextAnimal"){
+      assistantRef.current?.sendData({ action: { action_id: 'nextAnimal' }});    
+    }
+  }, [appState.next_task])
 
   // useEffect(() => {
   //   if(appState.next_task == 1){

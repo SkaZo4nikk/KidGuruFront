@@ -26,12 +26,11 @@ const MainPage = ({dispatch}) =>{
       }, []);
 
       const MathGuru = () => {
-        dispatch({type: "redirect", redirect: 1})
-        dispatch({type: "next_task", next_task: 1})
+        dispatch({type: "start_math", start: 1})
       }
   
       const AnimalGuru = () => {
-        dispatch({type: "redirect", redirect: 2})
+        dispatch({type: "start_animal", start_g: 1})
       }
 
     return(
