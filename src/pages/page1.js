@@ -9,15 +9,7 @@ import { Image } from '@sberdevices/ui/components/Image/Image';
 import { Link } from "react-router-dom";
 //base64, 
 const Wrapper = styled.div`
-    @media screen and (min-width: 1201px) {
-        max-width: 50vw;
-        margin: 0 auto;
-        img {
-            max-height: 48vh;
-        }
-    }
-
-    @media screen and (min-width: 1600px) {
+    @media screen and (min-width: 1538px)  {
         max-width: 70vw;
         margin: 0 auto;
         img {
@@ -33,19 +25,19 @@ const Wrapper = styled.div`
         }
     }
 
-    @media screen and (height: 800px) and (width: 1280px){
-        max-width: 40vw;
+    @media screen and (min-width: 1120px) and (max-width: 1536px){
+        max-width: 75vw;
         margin: 0 auto;
         #top img{
-            max-height: 30vh;
+            max-height: 47vh;
         }
     }
 
-    @media screen and (max-height: 801px) and (max-width: 1201px){
-        max-width: 80vw;
+    @media screen and (min-width: 0px) and (max-width: 1118px){
+        max-width: 85vw;
         margin: 0 auto;
         #top img{
-            max-height: 30vh;
+            max-height: 50vh;
         }
     }
 
