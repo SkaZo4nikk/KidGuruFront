@@ -10,10 +10,18 @@ import { Link } from "react-router-dom";
 //base64, 
 const Wrapper = styled.div`
     @media screen and (min-width: 1201px) {
-        max-width: 40vw;
+        max-width: 50vw;
         margin: 0 auto;
         img {
-            max-height: 40vh;
+            max-height: 48vh;
+        }
+    }
+
+    @media screen and (min-width: 1600px) {
+        max-width: 70vw;
+        margin: 0 auto;
+        img {
+            max-height: 60vh;
         }
     }
 
